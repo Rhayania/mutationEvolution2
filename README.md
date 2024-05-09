@@ -19,3 +19,23 @@ M. inflexa: Fastq files. This is RNAseq data since there is no current genome pu
 TODO: Try updating this to ```fasterq-dump```. Note the ```--split-3``` option is default.
 
 TODO: Create .txt file of SRA accession codes for easy access.
+
+## 2. Transcriptome assembly with Trinity
+
+TODO
+
+## 3. Identify Homologs between M. polymorpha and M. inflexa
+
+TODO
+
+## 4. Align sequences
+
+TODO
+
+## 5. Calculate sequence divergence
+
+TODO
+
+## 6. Preliminary analysis
+
+TODO
