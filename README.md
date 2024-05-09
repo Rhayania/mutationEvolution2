@@ -17,4 +17,5 @@ M. inflexa: Fastq files. This is RNAseq data since there is no current genome pu
 ```fastq-dump --split-3 SRR10271376``` 
 
 TODO: Try updating this to ```fasterq-dump```. Note the ```--split-3``` option is default.
+
 TODO: Create .txt file of SRA accession codes for easy access.
