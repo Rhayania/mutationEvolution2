@@ -4,3 +4,14 @@ The broad goal of this project is to begin investigating whether plants exhibit 
 From a different perspective, each of these sex chromosomes (U or V respectively) "lives" in only one sex 100% of the time. Comparatively, in our XY system, the X chromosome spends 2/3 of its "time" in females and 1/3 in males. By beginning in a system where there is a chromosome exclusive to one sex, we hope that any differences in mutation rates are more apparent.
 
 This repository houses a revised pipeline of the M. polymorpha and M. inflexa data, now streamlined with Snakemake. The Snakemake pipeline will prevent the need to start each step manually as an individual job: once started, the user should be able to log off and return when everything has finished (~1-2 days, per my experience). The details of the workflow are outlined below.
+
+## 1. Data Downloads
+
+M. Polymorpha: Fasta files from https://marchantia.info/download/MpTak_v6.1r2/ (both DNA sequences and protein sequences)
+* MpTak_v6.1r2.cds.fasta.gz
+* MpTak_v6.1r2.protein.fasta
+* "Data 1" file download from https://www.sciencedirect.com/science/article/pii/S0960982221014123#app2 (This lists gene names on the U and V chromosomes)
+
+M. inflexa: Fastq files. This is RNAseq data since there is no current genome published. Data is acquired from __ using SRA toolkit:
+```fastq-dump --split-3 SRR10271376``` 
+TODO: Try updating this to '''fasterq-dump'''
