@@ -14,4 +14,4 @@ M. Polymorpha: Fasta files from https://marchantia.info/download/MpTak_v6.1r2/ (
 
 M. inflexa: Fastq files. This is RNAseq data since there is no current genome published. Data is acquired from __ using SRA toolkit:
 ```fastq-dump --split-3 SRR10271376``` 
-TODO: Try updating this to '''fasterq-dump'''
+TODO: Try updating this to ```fasterq-dump```
