@@ -12,8 +12,9 @@ M. Polymorpha: Fasta files from https://marchantia.info/download/MpTak_v6.1r2/ (
 * MpTak_v6.1r2.protein.fasta
 * "Data 1" file download from https://www.sciencedirect.com/science/article/pii/S0960982221014123#app2 (This lists gene names on the U and V chromosomes)
 
-M. inflexa: Fastq files. This is RNAseq data since there is no current genome published. Data is acquired from __ using SRA toolkit:
+M. inflexa: Fastq files. This is RNAseq data since there is no current genome published. Data is acquired from NCBI using SRA toolkit:
 
 ```fastq-dump --split-3 SRR10271376``` 
 
-TODO: Try updating this to ```fasterq-dump```
+TODO: Try updating this to ```fasterq-dump```. Note the ```--split-3``` option is default.
+TODO: Create .txt file of SRA accession codes for easy access.
