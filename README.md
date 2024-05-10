@@ -5,6 +5,10 @@ From a different perspective, each of these sex chromosomes (U or V respectively
 
 This repository houses a revised pipeline of the M. polymorpha and M. inflexa data, now streamlined with Snakemake. The Snakemake pipeline will prevent the need to start each step manually as an individual job: once started, the user should be able to log off and return when everything has finished (~1-2 days, per my experience). The details of the workflow are outlined below, which were largely guided by Dan in the original project.
 
+## Navigating the Repo
+
+TODO
+
 ## 1. Data Downloads
 
 M. Polymorpha: Fasta files from https://marchantia.info/download/MpTak_v6.1r2/ (both DNA sequences and protein sequences)
