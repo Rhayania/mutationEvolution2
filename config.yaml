@@ -1,0 +1,12 @@
+# Put the list of accession codes we want here
+codes: 
+  - "SRR10271376"
+  - "SRR10271378"
+  - "SRR10271386"
+  - "SRR10271408"
+  - "SRR10271430"
+  - "SRR10271420"
+  - "SRR10271422"
+  - "SRR10271424"
+  - "SRR10271426"
+  - "SRR10271428"
