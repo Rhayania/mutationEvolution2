@@ -20,8 +20,8 @@ rule data_download:
             
 rule trinity_assembly:
     output:
-        male="output/trinity/male.Trinity.fasta",
-        female="output/trinity/female.Trinity.fasta"
+        male_trinity="output/trinity/male.Trinity.fasta",
+        female_trinity="output/trinity/female.Trinity.fasta"
     log:
         "logs/trinity/trinity.log"
     conda:
@@ -39,13 +39,27 @@ rule make_genes_map:
         shell("gzip -d rawdata/MpTak_v6.1r2.protein.fasta.gz")
         shell("python scripts/run_genes_map.py")
         
-rule make_polymorpha__uv_fastas:
+rule make_polymorpha_uv_fastas:
     output:
         u_out="rawdata/u_genes_aa.fasta",
         v_out="rawdata/v_genes_aa.fasta"
     run:
         shell("python scripts/make_fasta.py {u_map} {u_out} A")
         shell("python scripts/make_fasta.py {v_map} {v_out} A")
+        
+rule run_blast:
+    output:
+        u_vs_male="output/blast/blast_u_poly_male_inflexa.out",
+        v_vs_male="output/blast/blast_v_poly_male_inflexa.out",
+        u_vs_female="output/blast/blast_u_poly_female_inflexa.out",
+        v_vs_female="output/blast/blast_v_poly_female_inflexa.out"
+    log:
+        "logs/blast/blast.log"
+    run:
+        shell("tblastn -query {u_out} -db {male_trinity} -out {u_vs_male} -evalue 1e-6 -outfmt 5")
+        shell("tblastn -query {v_out} -db {male_trinity} -out {v_vs_male} -evalue 1e-6 -outfmt 5")
+        shell("tblastn -query {u_out} -db {female_trinity} -out {u_vs_female} -evalue 1e-6 -outfmt 5")
+        shell("tblastn -query {v_out} -db {female_trinity} -out {v_vs_female} -evalue 1e-6 -outfmt 5")
 
 
 
