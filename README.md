@@ -29,7 +29,7 @@ M. Polymorpha: Fasta files from https://marchantia.info/download/MpTak_v6.1r2/ (
 * MpTak_v6.1r2.cds.fasta.gz
 * MpTak_v6.1r2.protein.fasta.gz
 * "Data 1" from https://www.sciencedirect.com/science/article/pii/S0960982221014123#app2 (This lists gene names on the U and V chromosomes)
-  * Gene lists for the U and V chromosomes are already in the repo to save the need to redo this step each time, stored as ```ugenes.txt``` and ```vgenes.txt``` in the ```rawdata/``` folder.
+  * Gene lists for the U and V chromosomes are already in the repo to prevent the need to redo this step each time, stored as ```ugenes.txt``` and ```vgenes.txt``` in the ```rawdata/``` folder.
 
 M. inflexa: Fastq files. This is RNAseq data since there is no current genome published. Data is acquired from NCBI using SRA toolkit. Accession codes are listed in ```config.yaml```: 5 paired-end reads each from one male and one female individual. Downloads are stored in the ```rawdata/``` folder.
 
