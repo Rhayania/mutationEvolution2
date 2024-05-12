@@ -7,9 +7,21 @@ This repository houses a revised pipeline of the M. polymorpha and M. inflexa da
 
 ## Navigating the Repo
 
-TODO
+```envs/```: A folder that contains .yaml files for any additional conda environments needed by our workflow steps.
 
-```submit_snakemake.sh```: This is a shell script that runs our Snakemake workflow as a job via SLURM. This is important because our first two steps take several hours to run and take enough compute power that it's rude to run without submitting to the queue. Run this with ```sbatch submit_snakemake.sh```.
+```logs/```: A folder that contains all error and standard output logs from various steps of the pipeline. Git is set to ignore any files added so they stay local.
+
+```output/```: A folder that contains sub-directories for each pipeline step. Git is set to ignore any files added so they stay local.
+
+```rawdata/```: A folder for storing the initial data for the pipeline. Git is set to ignore any files added so they stay local.
+
+```scripts/```: A folder containing the python scripts used for data wrangling and preliminary data analysis.
+
+```config.yaml```: A file that holds any configuration data needed for the pipeline.
+
+```Snakefile```: A file that contains all of the details of the data pipeline.
+
+```submit_snakemake.sh```: A shell script that runs our Snakefile as a job via SLURM. This is important because our first two steps take several hours to run and take enough compute power that it's rude to run without submitting to the queue. Run this with ```sbatch submit_snakemake.sh```.
 
 ## 1. Data Downloads
 
