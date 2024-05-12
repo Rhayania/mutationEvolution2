@@ -43,7 +43,7 @@ This step is generally the one that is most difficult to run successfully. I had
 
 ## 3. Align sequences and identify homologs between M. polymorpha and M. inflexa
 
-There are a series of minor steps run before our blast search that reduce the M. polymorpha .fasta files to only the genes on the u and v chromosomes. Once finnished, we can run a command-line blast search between the .fasta files of the two speccies to pull out homologs. For more information on blast, see here: https://blast.ncbi.nlm.nih.gov/Blast.cgi.
+There are a series of minor steps run before our blast search that reduce the M. polymorpha .fasta files to only the genes on the u and v chromosomes. Once finished, we can run a command-line blast search between the .fasta files of the two speccies to pull out homologs. For more information on blast, see here: https://blast.ncbi.nlm.nih.gov/Blast.cgi.
 
 We use the assembled M. inflexa .fasta files as the "database" for blast, with each gene in the M. polymorpha .fasta files serving as the queries. We run four total blast searches, comparing the u and v genes of M. polymorpha to the male and female M. inflexa data. We expect more hits between U genes and the female transcriptome, and the V genes and the male transcriptome. Output is stored in .xml format for later processing steps in the ```output/blast/``` directory.
 
