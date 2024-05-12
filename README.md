@@ -56,6 +56,9 @@ Blast output files are run through a script that pull out the best hits for each
 Below are example figures from the first time I completed the pipeline:
 ![plot](./rawdata/percent_identity_plots_example.png)
 
+But a simple, "ideal" system would have plot output like this:
+![plot](./rawdata/ideal_percent_identity_plots.png)
+
 ## Future Improvements
 
 There are a few simple improvements that could be made to this pipeline if I were put-together enough to have time for it, listed below:
