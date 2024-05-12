@@ -23,10 +23,10 @@ rule trinity_assembly:
         female_files1="SRR10271420_1.fastq,SRR10271422_1.fastq,SRR10271424_1.fastq,SRR10271426_1.fastq,SRR10271428_1.fastq",
         female_files2="SRR10271420_2.fastq,SRR10271422_2.fastq,SRR10271424_2.fastq,SRR10271426_2.fastq,SRR10271428_2.fastq"
     output:
-        male="TODO",
-        female="TODO"
+        male="output/trinity/male.Trinity.fasta",
+        female="output/trinity/female.Trinity.fasta"
     conda:
         "trinity.yaml"
     run:
-        shell("Trinity --seqType fq --left {male_files1} --right {male_files2} --CPU 12 --max_memory 200G --output male")
-        shell("Trinity --seqType fq --left {female_files1} --right {female_files2} --CPU 12 --max_memory 200G --output female")
+        shell("Trinity --seqType fq --left {male_files1} --right {male_files2} --CPU 12 --max_memory 200G --output output/trinity/male")
+        shell("Trinity --seqType fq --left {female_files1} --right {female_files2} --CPU 12 --max_memory 200G --output output/trinity/female")
