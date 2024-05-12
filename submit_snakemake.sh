@@ -5,7 +5,7 @@
 #SBATCH --nodes=1                              # Number of nodes
 #SBATCH --ntasks-per-node=1                    # Number of tasks per node
 #SBATCH --cpus-per-task=12                      # Number of CPU cores per task
-#SBATCH --time=9:00:00                         # Time limit (format: HH:MM:SS)
+#SBATCH --time=15:00:00                         # Time limit (format: HH:MM:SS)
 
 # Load modules
 module load sra-toolkit
