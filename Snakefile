@@ -11,6 +11,11 @@ configfile: "config.yaml"
 # Define accession codes from the values in the config file
 CODES=list(config["codes"])
 
+rule all:
+    input:
+        "output/plot_percent_identity/u_chrom_queries.png",
+        "output/plot_percent_identity/v_chrom_queries.png"
+
 rule data_download:
     log:
         "logs/data_download/download.log"
@@ -26,12 +31,14 @@ rule trinity_assembly:
         "logs/trinity/trinity.log"
     conda:
         "envs/trinity.yaml"
-    run:
-        shell("Trinity --seqType fq --left SRR10271376_1.fastq,SRR10271378_1.fastq,SRR10271386_1.fastq,SRR10271408_1.fastq,SRR10271430_1.fastq --right SRR10271376_2.fastq,SRR10271378_2.fastq,SRR10271386_2.fastq,SRR10271408_2.fastq,SRR10271430_2.fastq --CPU 12 --max_memory 200G --output output/trinity/male")
-        shell("Trinity --seqType fq --left SRR10271420_1.fastq,SRR10271422_1.fastq,SRR10271424_1.fastq,SRR10271426_1.fastq,SRR10271428_1.fastq --right SRR10271420_2.fastq,SRR10271422_2.fastq,SRR10271424_2.fastq,SRR10271426_2.fastq,SRR10271428_2.fastq --CPU 12 --max_memory 200G --output output/trinity/female")
+    shell:
+        """
+        Trinity --seqType fq --left SRR10271376_1.fastq,SRR10271378_1.fastq,SRR10271386_1.fastq,SRR10271408_1.fastq,SRR10271430_1.fastq --right SRR10271376_2.fastq,SRR10271378_2.fastq,SRR10271386_2.fastq,SRR10271408_2.fastq,SRR10271430_2.fastq --CPU 12 --max_memory 200G --output output/trinity/male &&
+        Trinity --seqType fq --left SRR10271420_1.fastq,SRR10271422_1.fastq,SRR10271424_1.fastq,SRR10271426_1.fastq,SRR10271428_1.fastq --right SRR10271420_2.fastq,SRR10271422_2.fastq,SRR10271424_2.fastq,SRR10271426_2.fastq,SRR10271428_2.fastq --CPU 12 --max_memory 200G --output output/trinity/female
+        """
         
 rule make_genes_map:
-    ouput:
+    output:
         u_map="output/make_genes_map/u_genes_map.csv",
         v_map="output/make_genes_map/v_genes_map.csv"
     run:
@@ -47,8 +54,8 @@ rule make_polymorpha_uv_fastas:
         u_out="output/make_polymorpha_uv_fastas/u_genes_aa.fasta",
         v_out="output/make_polymorpha_uv_fastas/v_genes_aa.fasta"
     run:
-        shell("python scripts/make_fasta.py {u_map} {u_out} A")
-        shell("python scripts/make_fasta.py {v_map} {v_out} A")
+        shell("python scripts/make_fasta.py {input.u_map} {output.u_out} A")
+        shell("python scripts/make_fasta.py {input.v_map} {output.v_out} A")
         
 rule run_blast:
     input:
@@ -64,10 +71,10 @@ rule run_blast:
     log:
         "logs/blast/blast.log"
     run:
-        shell("tblastn -query {u_out} -db {male_trinity} -out {u_vs_male} -evalue 1e-6 -outfmt 5")
-        shell("tblastn -query {v_out} -db {male_trinity} -out {v_vs_male} -evalue 1e-6 -outfmt 5")
-        shell("tblastn -query {u_out} -db {female_trinity} -out {u_vs_female} -evalue 1e-6 -outfmt 5")
-        shell("tblastn -query {v_out} -db {female_trinity} -out {v_vs_female} -evalue 1e-6 -outfmt 5")
+        shell("tblastn -query {input.u_out} -db {input.male_trinity} -out {output.u_vs_male} -evalue 1e-6 -outfmt 5")
+        shell("tblastn -query {input.v_out} -db {input.male_trinity} -out {output.v_vs_male} -evalue 1e-6 -outfmt 5")
+        shell("tblastn -query {input.u_out} -db {input.female_trinity} -out {output.u_vs_female} -evalue 1e-6 -outfmt 5")
+        shell("tblastn -query {input.v_out} -db {input.female_trinity} -out {output.v_vs_female} -evalue 1e-6 -outfmt 5")
 
 rule parse_blast:
     input:
@@ -82,11 +89,13 @@ rule parse_blast:
         blast_hits_v_female="output/parse_blast/blast_v_poly_female_inflexa_top_hits.csv"
     conda:
         "envs/biopython.yaml"
-    run:
-        shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
-        shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
-        shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
-        shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
+    shell:
+        """
+        python scripts/parse_blast.py {input.u_vs_male} {output.blast_hits_u_male} &&
+        python scripts/parse_blast.py {input.u_vs_male} {output.blast_hits_u_male} &&
+        python scripts/parse_blast.py {input.u_vs_male} {output.blast_hits_u_male} &&
+        python scripts/parse_blast.py {input.u_vs_male} {output.blast_hits_u_male}
+        """
         
 rule plot_percent_identity:
     input:
