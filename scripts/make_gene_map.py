@@ -8,12 +8,12 @@
 import os
 
 # Variables
-path_to_vgenes = "../../vgenes.txt"                         # Path to a .txt file containing gene names found on the V chromosome
-path_to_ugenes = "../../ugenes.txt"                         # Path to a .txt file containing gene names found on the U chromosome
-path_to_aa_fasta = "../../MpTak_v6.1r2.protein.fasta"       # Path to the fasta file containing the amino acid sequences for each gene
-path_to_nuc_fasta = "../../MpTak_v6.1r2.cds.fasta"          # Path to the fasta file containing the nucleotide sequences for each gene
-u_filename = "../../u_genes_map.csv"                        # Path to the output file for the U genes map
-v_filename = "../../v_genes_map.csv"                        # Path to the output file for the V genes map
+path_to_vgenes = "../rawdata/vgenes.txt"                         # Path to a .txt file containing gene names found on the V chromosome
+path_to_ugenes = "../rawdata/ugenes.txt"                         # Path to a .txt file containing gene names found on the U chromosome
+path_to_aa_fasta = "../rawdata/MpTak_v6.1r2.protein.fasta"       # Path to the fasta file containing the amino acid sequences for each gene
+path_to_nuc_fasta = "../rawdata/MpTak_v6.1r2.cds.fasta"          # Path to the fasta file containing the nucleotide sequences for each gene
+u_filename = "../rawdata/u_genes_map.csv"                        # Path to the output file for the U genes map
+v_filename = "../rawdata/v_genes_map.csv"                        # Path to the output file for the V genes map
 
 def main():
     # Map V chromosome genes
