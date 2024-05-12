@@ -34,8 +34,10 @@ rule make_genes_map:
     ouput:
         u_map="rawdata/u_genes_map.csv",
         v_map="rawdata/v_genes_map.csv"
-    shell:
-        "python scripts/run_genes_map.py"
+    run:
+        shell("gzip -d rawdata/MpTak_v6.1r2.cds.fasta.gz")
+        shell("gzip -d rawdata/MpTak_v6.1r2.protein.fasta.gz")
+        shell("python scripts/run_genes_map.py")
         
 rule make_polymorpha__uv_fastas:
     output:
