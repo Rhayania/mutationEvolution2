@@ -11,18 +11,12 @@ TODO
 
 ## 1. Data Downloads
 
-M. Polymorpha: Fasta files from https://marchantia.info/download/MpTak_v6.1r2/ (both DNA sequences and protein sequences)
+M. Polymorpha: Fasta files from https://marchantia.info/download/MpTak_v6.1r2/ (both DNA sequences and protein sequences). Manually download and store these three files in your repo in the ```rawdata/``` folder.
 * MpTak_v6.1r2.cds.fasta.gz
 * MpTak_v6.1r2.protein.fasta.gz
 * "Data 1" file download from https://www.sciencedirect.com/science/article/pii/S0960982221014123#app2 (This lists gene names on the U and V chromosomes)
 
-M. inflexa: Fastq files. This is RNAseq data since there is no current genome published. Data is acquired from NCBI using SRA toolkit:
-
-```fastq-dump --split-3 SRR10271376``` 
-
-TODO: Try updating this to ```fasterq-dump```. Note the ```--split-3``` option is default.
-
-TODO: Create .txt file of SRA accession codes for easy access.
+M. inflexa: Fastq files. This is RNAseq data since there is no current genome published. Data is acquired from NCBI using SRA toolkit. Accession codes are listed in ```config.yaml```: 5 paired-end reads each from one male and one female individual. Downloads are stored in the ```rawdata/``` folder.
 
 ## 2. Transcriptome assembly with Trinity
 
