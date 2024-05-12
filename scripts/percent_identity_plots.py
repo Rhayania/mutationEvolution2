@@ -11,16 +11,15 @@ u_male_file = "output/parse_blast/blast_u_poly_male_inflexa_top_hits.csv"
 u_female_file = "output/parse_blast/blast_u_poly_female_inflexa_top_hits.csv"
 v_male_file = "output/parse_blast/blast_v_poly_male_inflexa_top_hits.csv"
 v_female_file = "output/parse_blast/blast_v_poly_female_inflexa_top_hits.csv"
+output_u = "output/plot_percent_identity/u_chrom_queries.png"
+output_v = "output/plot_percent_identity/v_chrom_queries.png"
 
 def main():
-    make_scatter(u_male_file, u_female_file, 1, "U")
-    make_scatter(v_male_file, v_female_file, 2, "V")
-
-    # To show the plots
-    plt.show()
+    make_scatter(u_male_file, u_female_file, 1, "U", output_u)
+    make_scatter(v_male_file, v_female_file, 2, "V", output_v)
 
 
-def make_scatter(male_file, female_file, num, chrom):
+def make_scatter(male_file, female_file, num, chrom, output_file):
 
     # Variables
     male = []
@@ -63,6 +62,8 @@ def make_scatter(male_file, female_file, num, chrom):
     plt.title('Male vs. female hit percent identities for ' + chrom + ' chromosome queries')
 
     plt.scatter(male, female)
+    
+    plt.savefig(output_file)
 
 
 
