@@ -68,3 +68,4 @@ There are a few simple improvements that could be made to this pipeline if I wer
 - Run data file downloads from NCBI in parallel (would save ~2hrs of time)
 - Run both transcriptome assemblies in parallel (would save ~5hrs of time)
 - List the output file names for the data_download step so it doesn't get run everytime the snakemake workflow is started
+- Move this list into the "issues" section of this repository like a competent software engineer
