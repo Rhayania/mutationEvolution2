@@ -54,7 +54,7 @@ I had some issues getting the blast package downloaded via conda, and (like with
 Blast output files are run through a script that pull out the best hits for each query, and save the data into a .csv file. From here, you can begin your own analysis of the data based on what questions you want to ask. An initial analysis step of mine was left in that simply plots percent identity values for U vs V gene queries. 
 
 Below are example figures from the first time I completed the pipeline:
-
+![plot](./rawdata/percent_identity_plots_example.png)
 
 ## Future Improvements
 
