@@ -87,6 +87,18 @@ rule parse_blast:
         shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
         shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
         shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
+        
+rule plot_percent_identity:
+    input:
+        blast_hits_u_male="output/parse_blast/blast_u_poly_male_inflexa_top_hits.csv",
+        blast_hits_u_female="output/parse_blast/blast_u_poly_female_inflexa_top_hits.csv",
+        blast_hits_v_male="output/parse_blast/blast_v_poly_male_inflexa_top_hits.csv",
+        blast_hits_v_female="output/parse_blast/blast_v_poly_female_inflexa_top_hits.csv"
+    output:
+        "output/plot_percent_identity/u_chrom_queries.png",
+        "output/plot_percent_identity/v_chrom_queries.png"
+    shell:
+        "python scripts/percent_identity_plots.py"
 
 
 
