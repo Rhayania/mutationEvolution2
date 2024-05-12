@@ -59,6 +59,8 @@ Below are example figures from the first time I completed the pipeline:
 But a simple, "ideal" system would have plot output like this:
 ![plot](./rawdata/ideal_percent_identity_plots.png)
 
+Was the transcriptome assembly terribly inaccurate? Are there simply many homologs between the two sex chromosomes? Perhaps one day we will know...
+
 ## Future Improvements
 
 There are a few simple improvements that could be made to this pipeline if I were put-together enough to have time for it, listed below:
