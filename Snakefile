@@ -25,7 +25,7 @@ rule trinity_assembly:
     log:
         "logs/trinity/trinity.log"
     conda:
-        "trinity.yaml"
+        "envs/trinity.yaml"
     run:
         shell("Trinity --seqType fq --left SRR10271376_1.fastq,SRR10271378_1.fastq,SRR10271386_1.fastq,SRR10271408_1.fastq,SRR10271430_1.fastq --right SRR10271376_2.fastq,SRR10271378_2.fastq,SRR10271386_2.fastq,SRR10271408_2.fastq,SRR10271430_2.fastq --CPU 12 --max_memory 200G --output output/trinity/male")
         shell("Trinity --seqType fq --left SRR10271420_1.fastq,SRR10271422_1.fastq,SRR10271424_1.fastq,SRR10271426_1.fastq,SRR10271428_1.fastq --right SRR10271420_2.fastq,SRR10271422_2.fastq,SRR10271424_2.fastq,SRR10271426_2.fastq,SRR10271428_2.fastq --CPU 12 --max_memory 200G --output output/trinity/female")
@@ -69,7 +69,24 @@ rule run_blast:
         shell("tblastn -query {u_out} -db {female_trinity} -out {u_vs_female} -evalue 1e-6 -outfmt 5")
         shell("tblastn -query {v_out} -db {female_trinity} -out {v_vs_female} -evalue 1e-6 -outfmt 5")
 
-
+rule parse_blast:
+    input:
+        u_vs_male="output/blast/blast_u_poly_male_inflexa.out",
+        v_vs_male="output/blast/blast_v_poly_male_inflexa.out",
+        u_vs_female="output/blast/blast_u_poly_female_inflexa.out",
+        v_vs_female="output/blast/blast_v_poly_female_inflexa.out"
+    output:
+        blast_hits_u_male="blast_u_poly_male_inflexa_top_hits.csv",
+        blast_hits_u_female="blast_u_poly_female_inflexa_top_hits.csv",
+        blast_hits_v_male="blast_v_poly_male_inflexa_top_hits.csv",
+        blast_hits_v_female="blast_v_poly_female_inflexa_top_hits.csv"
+    conda:
+        "envs/biopython.yaml"
+    run:
+        shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
+        shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
+        shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
+        shell("python scripts/parse_blast.py {u_vs_male} {blast_hits_u_male}")
 
 
 
