@@ -40,6 +40,9 @@ rule make_genes_map:
         shell("python scripts/run_genes_map.py")
         
 rule make_polymorpha_uv_fastas:
+    input:
+        u_map="rawdata/u_genes_map.csv",
+        v_map="rawdata/v_genes_map.csv"
     output:
         u_out="rawdata/u_genes_aa.fasta",
         v_out="rawdata/v_genes_aa.fasta"
@@ -48,6 +51,11 @@ rule make_polymorpha_uv_fastas:
         shell("python scripts/make_fasta.py {v_map} {v_out} A")
         
 rule run_blast:
+    input:
+        u_out="rawdata/u_genes_aa.fasta",
+        v_out="rawdata/v_genes_aa.fasta",
+        male_trinity="output/trinity/male.Trinity.fasta",
+        female_trinity="output/trinity/female.Trinity.fasta"
     output:
         u_vs_male="output/blast/blast_u_poly_male_inflexa.out",
         v_vs_male="output/blast/blast_v_poly_male_inflexa.out",
