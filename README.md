@@ -26,19 +26,11 @@ Each assembly takes in 5 paired-end reads (10 files total) and outputs a single 
 
 This step is generally the one that is most difficult to run successfully. I had immense difficulty during my rotation installing a working version of Trinity from conda, and the solution ended up being to download and install the newest version manually. It also required a package called salmon. A separate conda environment was necessary for Trinity to avoid dependency issues.
 
-## 3. Identify Homologs between M. polymorpha and M. inflexa
+## 3. Align sequences and identify homologs between M. polymorpha and M. inflexa
 
 TODO
 
-## 4. Align sequences
-
-TODO
-
-## 5. Calculate sequence divergence
-
-TODO
-
-## 6. Preliminary analysis
+## 4. Preliminary analysis
 
 TODO
 
