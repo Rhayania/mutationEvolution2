@@ -47,7 +47,7 @@ There are a series of minor steps run before our blast search that reduce the M.
 
 We use the assembled M. inflexa .fasta files as the "database" for blast, with each gene in the M. polymorpha .fasta files serving as the queries. We run four total blast searches, comparing the u and v genes of M. polymorpha to the male and female M. inflexa data. We expect more hits between U genes and the female transcriptome, and the V genes and the male transcriptome. Output is stored in .xml format for later processing steps in the ```output/blast/``` directory.
 
-I had some issues getting the blast package downlaoded via conda, and (like with Trinity) needed to download and install a specific version from a file.
+I had some issues getting the blast package downloaded via conda, and (like with Trinity) needed to download and install a specific version from a file.
 
 ## 4. Preliminary analysis
 
