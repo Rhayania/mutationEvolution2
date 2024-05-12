@@ -76,10 +76,10 @@ rule parse_blast:
         u_vs_female="output/blast/blast_u_poly_female_inflexa.out",
         v_vs_female="output/blast/blast_v_poly_female_inflexa.out"
     output:
-        blast_hits_u_male="blast_u_poly_male_inflexa_top_hits.csv",
-        blast_hits_u_female="blast_u_poly_female_inflexa_top_hits.csv",
-        blast_hits_v_male="blast_v_poly_male_inflexa_top_hits.csv",
-        blast_hits_v_female="blast_v_poly_female_inflexa_top_hits.csv"
+        blast_hits_u_male="output/parse_blast/blast_u_poly_male_inflexa_top_hits.csv",
+        blast_hits_u_female="output/parse_blast/blast_u_poly_female_inflexa_top_hits.csv",
+        blast_hits_v_male="output/parse_blast/blast_v_poly_male_inflexa_top_hits.csv",
+        blast_hits_v_female="output/parse_blast/blast_v_poly_female_inflexa_top_hits.csv"
     conda:
         "envs/biopython.yaml"
     run:
