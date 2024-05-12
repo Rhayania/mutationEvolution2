@@ -32,8 +32,8 @@ rule trinity_assembly:
         
 rule make_genes_map:
     ouput:
-        u_map="rawdata/u_genes_map.csv",
-        v_map="rawdata/v_genes_map.csv"
+        u_map="output/make_genes_map/u_genes_map.csv",
+        v_map="output/make_genes_map/v_genes_map.csv"
     run:
         shell("gzip -d rawdata/MpTak_v6.1r2.cds.fasta.gz")
         shell("gzip -d rawdata/MpTak_v6.1r2.protein.fasta.gz")
@@ -41,19 +41,19 @@ rule make_genes_map:
         
 rule make_polymorpha_uv_fastas:
     input:
-        u_map="rawdata/u_genes_map.csv",
-        v_map="rawdata/v_genes_map.csv"
+        u_map="output/make_genes_map/u_genes_map.csv",
+        v_map="output/make_genes_map/v_genes_map.csv"
     output:
-        u_out="rawdata/u_genes_aa.fasta",
-        v_out="rawdata/v_genes_aa.fasta"
+        u_out="output/make_polymorpha_uv_fastas/u_genes_aa.fasta",
+        v_out="output/make_polymorpha_uv_fastas/v_genes_aa.fasta"
     run:
         shell("python scripts/make_fasta.py {u_map} {u_out} A")
         shell("python scripts/make_fasta.py {v_map} {v_out} A")
         
 rule run_blast:
     input:
-        u_out="rawdata/u_genes_aa.fasta",
-        v_out="rawdata/v_genes_aa.fasta",
+        u_out="output/make_polymorpha_uv_fastas/u_genes_aa.fasta",
+        v_out="output/make_polymorpha_uv_fastas/v_genes_aa.fasta",
         male_trinity="output/trinity/male.Trinity.fasta",
         female_trinity="output/trinity/female.Trinity.fasta"
     output:
