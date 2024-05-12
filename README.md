@@ -49,7 +49,7 @@ We use the assembled M. inflexa .fasta files as the "database" for blast, with e
 
 ## 4. Preliminary analysis
 
-TODO
+Blast output files are run through a script that pull out the best hits for each query, and save the data into a .csv file. From here, you can begin your own analysis of the data based on what questions you want to ask. An initial analysis step of mine was left in that simply plots percent identity values for U vs V gene queries. 
 
 ## Future Improvements
 
