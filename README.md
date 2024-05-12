@@ -43,9 +43,7 @@ This step is generally the one that is most difficult to run successfully. I had
 
 ## 3. Align sequences and identify homologs between M. polymorpha and M. inflexa
 
-There is a bit of setup to do before we can run a blast search between the two species:
-
-1. Unzip the M. polymorpha files with ```gzip -d MpTak_v6.1r2.cds.fasta.gz``` and ```gzip -d MpTak_v6.1r2.protein.fasta.gz```
+There are a series of minor steps run before our blast search that reduce the M. polymorpha .fasta files to only the genes on the u and v chromosomes. Once finnished, we can run a command-line blast search between the .fasta files of the two speccies to pull out homologs. For more information on blast, see here: https://blast.ncbi.nlm.nih.gov/Blast.cgi.
 
 ## 4. Preliminary analysis
 
